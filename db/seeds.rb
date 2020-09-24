@@ -14,4 +14,4 @@ trip = jackson.trips.build(
     drop_off: Time.new(2020, 9, 27)
     )
 trip.gear_list = bouldering
-
+trip.save
