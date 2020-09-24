@@ -1,0 +1,20 @@
+<%= form_for trip do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %> <br>
+    <%= f.label :description %>
+    <%= f.text_area :description %> <br>
+    <%= f.label :pickup %>
+    <%= f.datetime_field :pickup %> <br>
+    <%= f.label :drop_off %>
+    <%= f.datetime_field :drop_off %> <br>
+    <%= f.label :gear_list %>
+    <%=  f.select :gear_list_id, @gear_lists.collect {|g| [g.name, g.id]}, include_blank: true %> <br>
+    <strong>--or--</strong> <br>
+    <%= f.label "Create New Gear List" %> <br>
+    <%= f.fields_for :gear_list do |g| %>
+        <%= g.label :name %>
+        <%= g.text_field :name %> <br>
+    <% end %>
+
+    <%= f.submit %> 
+<% end %>

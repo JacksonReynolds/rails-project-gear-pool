@@ -1,11 +1,12 @@
 class TripsController < ApplicationController
     def new
         @trip = Trip.new
-        @gear_list = @trip.gear_list.build
+        @trip.build_gear_list
+        @gear_lists = GearList.all
     end
 
     def create
-
+        binding.pry
     end
 
 
