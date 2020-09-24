@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+jackson = User.create(user_name: 'jackson', password:'jackson')
+bouldering = GearList.create(name: 'bouldering starter pack')
+trip = jackson.trips.build(
+    title: 'Rumbling Bald',
+    description: 'Going to Rumbling Bald, NC with the boiz',
+    pickup: Time.now,
+    drop_off: Time.new(2020, 9, 27)
+    )
+trip.gear_list = bouldering
+
