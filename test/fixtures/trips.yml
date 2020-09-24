@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  pickup: 2020-09-24 12:14:34
+  drop_off: 2020-09-24 12:14:34
+  user_id: 1
+  gear_list_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  pickup: 2020-09-24 12:14:34
+  drop_off: 2020-09-24 12:14:34
+  user_id: 1
+  gear_list_id: 1
