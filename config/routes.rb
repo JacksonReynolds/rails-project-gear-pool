@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root to: 'application#welcome'
+  get '/signin', to: 'sessions#new', as: 'signin'
+  ger '/signup', to: 'users#new', as: 'signup'
   resources :items
   resources :trips
   resources :gear_lists
