@@ -1,16 +1,26 @@
 <%= form_for trip do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %> <br>
-    <%= f.label :description %>
-    <%= f.text_area :description %> <br>
+    <%= f.label :destination %>
+    <%= f.text_field :destination %> <br>
     <%= f.label :pickup %>
     <%= f.datetime_field :pickup %> <br>
-    <%= f.label :drop_off %>
-    <%= f.datetime_field :drop_off %> <br>
-    <%= f.label "Please List gear you would like to rent for this trip:" %>
+    <%= f.label :dropoff %>
+    <%= f.datetime_field :dropoff %> <br>
+    <%= f.label "Please select a gear list you'd like to rent:" %>
+    <%= f.select :gear_list_id, @gear_lists.collect{|g| [g.name, g.id]}, {include_blank: true} %> <br>
+    <strong>--or--</strong> <br>
+    Create a Custom Gear List: <br>
     <%= f.fields_for :gear_list do |g| %>
         <%= g.label :name %>
-        <%= g.text_field :name %> <br>
+        <%= g.text_field :name %>
+        <%= g.fields_for :items do |i| %>
+            i.label :name
+            i.text_field :name, list: "items_autocomplete"
+            <datalist id="items_autocomplete">
+                <% @items.each do |i|%>
+                    <option value="<%= i.name %>"></option>
+                <% end %>
+            </datalist>
+        <% end %>
     <% end %>
 
     <%= f.submit %> 

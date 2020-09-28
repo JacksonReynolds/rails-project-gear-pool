@@ -14,3 +14,8 @@ trip = jackson.trips.build(
     )
 trip.gear_list = bouldering
 trip.save
+bouldering.items.build([{name: 'big organic', description: '5" thick Organic crash pad', condition: 'fair'},
+            {name: 'chalk pot', description: "holds tons of chalk", condition: 'dusty'},
+            {name: 'shoes', description: 'La Sportiva Skwanas', condition: 'need love'}])
+            
+bouldering.save

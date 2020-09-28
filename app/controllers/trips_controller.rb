@@ -1,8 +1,8 @@
 class TripsController < ApplicationController
     def new
         @trip = Trip.new
-        @trip.build_gear_list
         @gear_lists = GearList.all
+        @items = Item.all
     end
 
     def create
