@@ -9,11 +9,14 @@ class TripsController < ApplicationController
     end
 
     def create
+        # binding.pry
+        @trip = current_user.trips.build(trip_params)
         binding.pry
-        @trip = Trip.new(trip_params)
         if @trip.save
             redirect_to trip_path(@trip)
         else
+            @gear_lists = GearList.all
+            @item = Item.all
             render 'new'
         end
     end
@@ -24,9 +27,9 @@ class TripsController < ApplicationController
         params.require(:trip).permit(:destination, :pickup, :dropoff, :gear_list_id, gear_list_attributes: [
             :name,
             items_attributes: [
-                :name
-    ]
-])
+                :id
+            ]
+        ])
     end
 
 end

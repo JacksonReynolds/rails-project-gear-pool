@@ -15,12 +15,7 @@
         Items: <br>
         <%= g.fields_for :items do |i| %>
             <%= i.label :name %>
-            <%= i.text_field :name, list: "items_autocomplete" %>
-            <datalist id="items_autocomplete">
-                <% @items.each do |i|%>
-                    <option value="<%= i.name %>"></option>
-                <% end %>
-            </datalist>
+            <%= i.select :id, @items.collect{|item| [item.name, item.id]}, {include_blank: true} %>
             <br>
         <% end %>
     <% end %>
