@@ -9,5 +9,8 @@ class TripsController < ApplicationController
         binding.pry
     end
 
+    private
+    
+
 
 end

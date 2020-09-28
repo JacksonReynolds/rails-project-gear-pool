@@ -8,10 +8,9 @@
 jackson = User.create(user_name: 'jackson', password:'jackson')
 bouldering = GearList.create(name: 'bouldering starter pack')
 trip = jackson.trips.build(
-    title: 'Rumbling Bald',
-    description: 'Going to Rumbling Bald, NC with the boiz',
+    destination: 'Rumbling Bald',
     pickup: Time.now,
-    drop_off: Time.new(2020, 9, 27)
+    dropoff: Time.new(2020, 9, 27)
     )
 trip.gear_list = bouldering
 trip.save
