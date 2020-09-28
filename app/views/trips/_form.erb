@@ -5,23 +5,25 @@
     <%= f.datetime_field :pickup %> <br>
     <%= f.label :dropoff %>
     <%= f.datetime_field :dropoff %> <br>
-    <%= f.label "Please select a gear list you'd like to rent:" %>
+    <%= f.label "Please select a Gear List you'd like to rent:" %>
     <%= f.select :gear_list_id, @gear_lists.collect{|g| [g.name, g.id]}, {include_blank: true} %> <br>
     <strong>--or--</strong> <br>
-    Create a Custom Gear List: <br>
+    Create a custom Gear List: <br>
     <%= f.fields_for :gear_list do |g| %>
         <%= g.label :name %>
-        <%= g.text_field :name %>
+        <%= g.text_field :name %> <br>
+        Items: <br>
         <%= g.fields_for :items do |i| %>
-            i.label :name
-            i.text_field :name, list: "items_autocomplete"
+            <%= i.label :name %>
+            <%= i.text_field :name, list: "items_autocomplete" %>
             <datalist id="items_autocomplete">
                 <% @items.each do |i|%>
                     <option value="<%= i.name %>"></option>
                 <% end %>
             </datalist>
+            <br>
         <% end %>
     <% end %>
-
+    <br>
     <%= f.submit %> 
 <% end %>
