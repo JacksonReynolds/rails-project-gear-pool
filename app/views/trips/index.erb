@@ -1,0 +1,5 @@
+<h1>Trip Index</h1>
+
+<%= link_to 'Add a Trip', new_trip_form %>
+
+<%= render partial: 'trip_table', locals: {trip: @trip} %>

@@ -6,4 +6,8 @@ module TripsHelper
     def index_table_time_format(time)
         time.strftime('%D @ %R')
     end
+
+    def gear_list_name(trip)
+        trip.gear_list.name
+    end
 end
