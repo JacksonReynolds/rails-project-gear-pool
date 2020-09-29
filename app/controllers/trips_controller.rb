@@ -8,6 +8,10 @@ class TripsController < ApplicationController
         @items = Item.all
     end
 
+    def index
+        @trips = Trip.all
+    end
+
     def create
         # binding.pry
         @trip = current_user.trips.build(trip_params)

@@ -10,4 +10,8 @@ module TripsHelper
     def gear_list_name(trip)
         trip.gear_list.name
     end
+
+    def user_name(trip)
+        trip.user.user_name
+    end
 end
