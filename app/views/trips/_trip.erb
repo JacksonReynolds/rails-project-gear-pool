@@ -1,0 +1,21 @@
+
+<p>
+Destination: <%= trip.destination %> <br>
+Gear Pickup: <%= show_page_time_format(trip.pickup) %> <br>
+Gear Dropoff: <%= show_page_time_format(trip.dropoff) %>
+</p>
+
+<h3>Gear</h3>
+
+<h4><%= trip.gear_list.name %></h4>
+
+<ul>
+    <% trip.gear_list.items.each do |item|%>
+        <li><%= item.name %>
+            <ul>
+                <li>Description: <%= item.description %></li>
+                <li>Condition: <%= item.condition %></li>
+            </ul>
+        </li>
+    <% end %>
+</ul>

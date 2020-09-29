@@ -11,14 +11,15 @@
 
   <body>
     <div class="nav">
-        <%= link_to 'Home', root_path, class: "w3-bar-item w3-button w3-hide-small w3-hover-white" %> | 
+        <%= link_to 'Home', root_path %> | 
         <% if current_user %> 
-            <%= link_to 'Trips', root_path, class: "w3-bar-item w3-button w3-hide-small w3-hover-white" %> | 
-            <%= link_to 'Gear Packages', root_path, class: "w3-bar-item w3-button w3-hide-small w3-hover-white" %> | 
-            <%= link_to 'Log Out', logout_path, {method: 'post', class: "w3-bar-item w3-button w3-hide-small w3-hover-white"} %>
+            <%= link_to 'Trips', root_path %> | 
+            <%= link_to 'Gear Packages', root_path %> | 
+            <%= link_to 'Profile', user_path(current_user) %> | 
+            <%= link_to 'Log Out', logout_path, {method: 'post'} %>
         <% else %>
-            <%= link_to 'Sign Up', signup_path, class: "w3-bar-item w3-button w3-hide-small w3-hover-white" %> | 
-            <%= link_to 'Sign In', signin_path, class: "w3-bar-item w3-button w3-hide-small w3-hover-white" %>
+            <%= link_to 'Sign Up', signup_path %> | 
+            <%= link_to 'Sign In', signin_path %>
         <% end %>
     </div>
 

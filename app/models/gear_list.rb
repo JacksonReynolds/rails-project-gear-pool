@@ -7,8 +7,6 @@ class GearList < ApplicationRecord
 
     def items_attributes=(items_attributes)
         items_attributes.each do |attr, value|
-            
-        # binding.pry
             unless value[:id].blank?
                 self.items << Item.find_by(value)
             end
