@@ -1,9 +1,13 @@
 class TripsController < ApplicationController
     def new
-        @trip = Trip.new
+        if params[:user_id] && @user = User.find_by(id: params[:user_id])
+            @trip = @user.trips.build
+            @gl
+        else
+            @trip = Trip.new
+        end
         @gl = @trip.build_gear_list
         5.times {@gl.items.build}
-        # binding.pry
         @gear_lists = GearList.all
         @items = Item.all
     end
@@ -13,9 +17,7 @@ class TripsController < ApplicationController
     end
 
     def create
-        # binding.pry
         @trip = current_user.trips.build(trip_params)
-        # binding.pry
         if @trip.save
             redirect_to trip_path(@trip)
         else

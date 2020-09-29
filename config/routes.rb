@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :items
   resources :trips
   resources :gear_lists
-  resources :users
+  resources :users do
+    resources :trips, only: [:new, :edit, :update, :destroy]
+  end
 end
