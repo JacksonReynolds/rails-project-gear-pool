@@ -1,5 +1,5 @@
 <h1>Plan a New Trip!</h1>
 
-<%= render partial: 'application/errors', locals: {errors: @trip.error.full_messages} %>
+<%= render partial: 'application/errors', locals: {errors: @trip.errors.full_messages} %>
 
 <%= render partial: 'form', locals: {trip: @trip} %>

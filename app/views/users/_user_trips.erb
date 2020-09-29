@@ -1,9 +1,9 @@
 <ul>
-    <% upcoming_trips.each do |trip| %>
+    <% user_upcoming_trips.each do |trip| %>
         <li>
             <ul>
                 <%= render partial: 'trips/trip', locals: {trip: trip} %>
             </ul>
         </li>
-    <% end if upcoming_trips %>
+    <% end if user_upcoming_trips %>
 </ul>

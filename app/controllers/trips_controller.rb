@@ -15,12 +15,13 @@ class TripsController < ApplicationController
     def create
         # binding.pry
         @trip = current_user.trips.build(trip_params)
-        binding.pry
+        # binding.pry
         if @trip.save
             redirect_to trip_path(@trip)
         else
             @gear_lists = GearList.all
-            @item = Item.all
+            @items = Item.all
+            5.times {@trip.gear_list.items.build}
             render 'new'
         end
     end
