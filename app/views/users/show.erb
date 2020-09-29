@@ -1,6 +1,6 @@
 <h1><%= current_user.user_name %>'s Profile</h1>
 
-<%= link_to "Plan a Trip", new_user_trip_path %>
+<%= link_to "Plan a Trip", new_user_trip_path(current_user) %>
 
 
 <%= render partial: 'user_trips' %>

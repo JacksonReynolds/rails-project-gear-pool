@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
     def new
-        if params[:user_id] && @user = User.find_by(id: params[:user_id])
+        if params[:user_id] && @user = User.find_by(id: params[:user_id]) && current_user == @user
             @trip = @user.trips.build
             @gl
         else
