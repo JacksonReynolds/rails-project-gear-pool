@@ -1,6 +1,13 @@
 class Trip < ApplicationRecord
+    include ActiveModel::Validations
     belongs_to :user
     belongs_to :gear_list
+    validates :destination, presence: true
+    validates :pickup, presence: true
+    validates :dropoff, presence: true
+    validates :gear_list, presence: true
+    validates_associated :gear_list
+    validates_with GearListItemsValidator
 
     # accepts_nested_attributes_for :gear_list, reject_if: proc {|attributes| attributes["name"].blank?}
 
