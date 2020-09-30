@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
     end
 
     def require_login
-        redirect_to signin_path if !current_user
+        if !current_user
+            redirect_to signin_path, alert: "Please sign in"
+        end
     end
 end

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+    before_action :require_login, only: [:show]
+
     def new
         @user = User.new
     end
@@ -14,7 +17,10 @@ class UsersController < ApplicationController
     end
 
     def show
-        
+        user = User.find_by(id: params[:id])
+        if user.nil? || user != current_user
+            redirect_to user_path(current_user), alert: "That's not your profile"
+        end
     end
 
     private

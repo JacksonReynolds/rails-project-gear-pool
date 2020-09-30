@@ -1,4 +1,7 @@
 class TripsController < ApplicationController
+
+    before_action :require_login, except: [:index]
+
     def new
         if params[:user_id]
             @user = User.find_by(id: params[:user_id])
