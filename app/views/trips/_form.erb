@@ -8,7 +8,7 @@
     <%= f.label :dropoff %>
     <%= f.datetime_field :dropoff %> <br>
     <%= f.label "Please select a Gear List you'd like to rent:" %>
-    <%= f.select :gear_list_id, @gear_lists.collect{|g| [g.name, g.id]}, {include_blank: true} %> <br>
+    <%= f.select :gear_list_id, @gear_lists.collect{|g| [g.name, g.id]} %> <br>
     
     <%= f.submit %> 
 <% end %>
