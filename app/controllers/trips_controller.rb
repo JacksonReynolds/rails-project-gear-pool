@@ -31,7 +31,11 @@ class TripsController < ApplicationController
     def show
         @trip = Trip.find_by(id: params[:id])
     end
+    
+    # def destroy
+    #     @trip = trip.find_by(id: params[:id])
 
+    # end
     private
     
     def trip_params

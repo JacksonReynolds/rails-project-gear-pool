@@ -5,5 +5,4 @@ class Item < ApplicationRecord
     validates :condition, presence: true
 
     accepts_nested_attributes_for :gear_list
-
 end
