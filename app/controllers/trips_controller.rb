@@ -36,9 +36,12 @@ class TripsController < ApplicationController
     end
     
     def destroy
-        @trip = trip.find_by(id: params[:id])
-        if trip.user != current_user
+        @trip = Trip.find_by(id: params[:id])
+        if @trip.user != current_user
             redirect_to user_path(current_user), alert: "That trip doesn't belong to you"
+        else
+            @trip.delete
+            redirect_to user_path(current_user), alert: "Trip cancelled!"
         end
     end
 
