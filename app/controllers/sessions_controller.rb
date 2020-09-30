@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+    before_action :require_logged_out, except: [:destroy]
+
     def new
     end
 
