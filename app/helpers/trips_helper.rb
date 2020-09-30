@@ -7,8 +7,8 @@ module TripsHelper
         time.strftime('%D @ %R')
     end
 
-    def gear_list_name(trip)
-        trip.gear_list.name
+    def gear_list_name(obj)
+        obj.gear_list.name
     end
 
     def user_name(trip)
