@@ -11,4 +11,8 @@ class ItemsController < ApplicationController
             @item = Item.find_by(id: params[:id])
         end
     end
+
+    def index
+        @items = Item.all
+    end
 end
