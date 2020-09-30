@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 
-    before_action :require_login, except: [:index]
+    before_action :require_login
 
     def new
         if params[:user_id]
@@ -18,7 +18,25 @@ class TripsController < ApplicationController
     end
 
     def index
-        @trips = Trip.all
+        if params[:filter]
+            user = User.find_by(id: params[:user_id])
+            if user == current_user
+                case params[:filter]
+                when 'All'
+                    @trips = user.trips
+                when 'Upcoming'
+                    @trips = Trip.upcoming_for_user(user)
+                when 'Past'
+                    @trips = Trip.past_for_user(user)
+                else
+                    redirect_to user_path(user), alert: "Try again"
+                end
+            else 
+                redirect_to user_path(user), alert: "Those aren't your trips"
+            end
+        else
+            @trips = Trip.all
+        end
     end
 
     def create

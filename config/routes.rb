@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :trips, only: [:new, :edit, :update, :destroy]
+    resources :trips, only: [:index, :new, :edit, :update, :destroy]
   end
+
+  post '/users/:user_id/trips', to: 'trips#index'
 
   get "/auth/:provider/callback", to: 'sessions#create_with_google'
 end

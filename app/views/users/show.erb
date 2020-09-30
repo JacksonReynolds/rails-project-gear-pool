@@ -2,8 +2,12 @@
 
 <%= render partial: 'application/alert' %>
 
-<%= link_to "Plan a Trip", new_user_trip_path(current_user) %>
+<%= link_to "Plan a Trip", new_user_trip_path(current_user) %> <br>
 
-<%= render partial: 'user_trips' %>
+
+View Your Trips:
+<%= button_to "All", user_trips_path(current_user), {name: 'filter'}%>
+<%= button_to "Upcoming", user_trips_path(current_user), {name: 'filter'}%>
+<%= button_to "Past", user_trips_path(current_user), {name: 'filter'}%>
 
 
