@@ -1,15 +1,17 @@
 class TripsController < ApplicationController
     def new
-        if params[:user_id] && @user = User.find_by(id: params[:user_id]) && current_user == @user
-            @trip = @user.trips.build
-            @gl
+        if params[:user_id]
+            @user = User.find_by(id: params[:user_id])
+            if !@user || @user != current_user
+                redirect_to root_path, alert: "Please sign in to plan a trip"
+            else
+                @trip = @user.trips.build
+            end
         else
             @trip = Trip.new
         end
         @gl = @trip.build_gear_list
-        5.times {@gl.items.build}
         @gear_lists = GearList.all
-        @items = Item.all
     end
 
     def index
@@ -22,8 +24,6 @@ class TripsController < ApplicationController
             redirect_to trip_path(@trip)
         else
             @gear_lists = GearList.all
-            @items = Item.all
-            5.times {@trip.gear_list.items.build}
             render 'new'
         end
     end

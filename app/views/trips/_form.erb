@@ -9,18 +9,6 @@
     <%= f.datetime_field :dropoff %> <br>
     <%= f.label "Please select a Gear List you'd like to rent:" %>
     <%= f.select :gear_list_id, @gear_lists.collect{|g| [g.name, g.id]}, {include_blank: true} %> <br>
-    <strong>--or--</strong> <br>
-    Create a custom Gear List: <br>
-    <%= f.fields_for :gear_list do |g| %>
-        <%= g.label :name %>
-        <%= g.text_field :name %> <br>
-        Items: <br>
-        <%= g.fields_for :items do |i| %>
-            <%= i.label :name %>
-            <%= i.select :id, @items.collect{|item| [item.name, item.id]}, {include_blank: true} %>
-            <br>
-        <% end %>
-    <% end %>
-    <br>
+    
     <%= f.submit %> 
 <% end %>
