@@ -1,11 +1,18 @@
-<%= form_for :item do |f| %>
+<%= form_for item do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %> <br>
     <%= f.label :description %>
-    <%= f.text_area :description %>
-    <%= f.label :conditio %>n
-    <%= f.test_field :condition %>
-    <%= f.select :gear_list_id, @gear_lists.collect {|g| g.name, g.id} %>
+    <%= f.text_area :description %> <br>
+    <%= f.label :condition %>
+    <%= f.text_field :condition %> <br>
+    <%= f.label "Select Gear List for item:" %>
+    <%= f.select :gear_list_id, @gear_lists.collect {|g| [g.name, g.id]}, {include_blank: true} %> <br>
+    <strong>--or--</strong> <br>
+    <%= f.label "Create new Gear List" %> <br>
+    <%= f.fields_for :gear_list do |g| %>
+        <%= g.label :name %>
+        <%= g.text_field :name %> <br>
+    <% end %>
  
     <%= f.submit %>
 <% end %>

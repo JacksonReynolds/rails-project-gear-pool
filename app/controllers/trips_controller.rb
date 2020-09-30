@@ -35,12 +35,7 @@ class TripsController < ApplicationController
     private
     
     def trip_params
-        params.require(:trip).permit(:destination, :pickup, :dropoff, :gear_list_id, gear_list_attributes: [
-            :name,
-            items_attributes: [
-                :id
-            ]
-        ])
+        params.require(:trip).permit(:destination, :pickup, :dropoff, :gear_list_id)
     end
 
 end

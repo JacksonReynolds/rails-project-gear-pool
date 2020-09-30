@@ -18,5 +18,25 @@ class ItemsController < ApplicationController
 
     def new
         @item = Item.new
+        @item.build_gear_list
+        @gear_lists = GearList.all
+
+    end
+
+    def create
+        @item = Item.new(item_params)
+        binding.pry
+        if @item.save 
+            redirect_to items_path
+        else
+            @gear_lists = GearList.all
+            render 'new'
+        end
+    end
+
+    private
+
+    def item_params
+        params.require(:item).permit(:name, :description, :condition, :gear_list_id, gear_list_attributes: [:name])
     end
 end

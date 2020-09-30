@@ -3,6 +3,7 @@ class GearList < ApplicationRecord
     has_many :trips
     has_many :users, through: :trips
     validates :name, presence: true
+    validates :name, uniqueness: true
 
     # accepts_nested_attributes_for :items, reject_if: proc {|attributes| attributes["name"].blank?}
 
