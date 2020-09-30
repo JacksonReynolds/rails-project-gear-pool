@@ -12,8 +12,7 @@
   <body>
     <div class="nav">
         <%= link_to 'Home', root_path %> | 
-        <% if current_user %> 
-            <%= link_to 'Trips', trips_path %> | 
+        <% if current_user %>
             <%= link_to 'Gear Packages', gear_lists_path %> | 
             <%= link_to 'Items', items_path %> | 
             <%= link_to 'Donate Item', new_item_path %> | 
