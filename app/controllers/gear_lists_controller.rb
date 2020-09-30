@@ -1,11 +1,7 @@
 class GearListsController < ApplicationController
 
-    def new
-
-    end
-
-    def create
-
+    def index
+        @gear_lists = GearList.all
     end
 
     private
