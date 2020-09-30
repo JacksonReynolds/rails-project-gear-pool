@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   get '/signup', to: 'users#new', as: 'signup'
   post '/logout', to: 'sessions#destroy', as: 'logout' 
+  
   resources :items
   resources :trips
+
   resources :gear_lists do
     resources :items, only: [:show]
   end
+
   resources :users do
     resources :trips, only: [:new, :edit, :update, :destroy]
   end
+
+  get '/auth/:provider/callback', to: 'sessions#create_with_google'
 end

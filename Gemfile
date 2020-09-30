@@ -23,7 +23,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
-gem 'omniauth-google'
+
+# Omniauth for Google Sign-In
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 gem 'dotenv'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
