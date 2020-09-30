@@ -2,7 +2,7 @@ class TripsController < ApplicationController
     def new
         if params[:user_id]
             @user = User.find_by(id: params[:user_id])
-            if !@user || @user != current_user
+            if @user != current_user
                 redirect_to root_path, alert: "Please sign in to plan a trip"
             else
                 @trip = @user.trips.build
@@ -38,6 +38,7 @@ class TripsController < ApplicationController
             redirect_to user_path(current_user), alert: "That trip doesn't belong to you"
         end
     end
+
     private
     
     def trip_params
