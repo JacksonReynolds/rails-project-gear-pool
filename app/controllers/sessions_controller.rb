@@ -13,7 +13,10 @@ class SessionsController < ApplicationController
     end
 
     def create_with_google
-        
+        @user = User.from_omniauth(auth)
+        @user.save
+        session[:user_id] = @user.id
+        redirect_to root_path
     end
 
     def destroy
@@ -22,6 +25,10 @@ class SessionsController < ApplicationController
     end
 
     private
+
+    def auth
+        request.env['omniauth.auth']
+    end
 
     def user_params
         params.require(:user).permit(:user_name, :password)

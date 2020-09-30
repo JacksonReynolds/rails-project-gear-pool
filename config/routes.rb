@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   get '/signup', to: 'users#new', as: 'signup'
   post '/logout', to: 'sessions#destroy', as: 'logout' 
-  
+
   resources :items
   resources :trips
 
@@ -16,5 +16,5 @@ Rails.application.routes.draw do
     resources :trips, only: [:new, :edit, :update, :destroy]
   end
 
-  get '/auth/:provider/callback', to: 'sessions#create_with_google'
+  get "/auth/:provider/callback", to: 'sessions#create_with_google'
 end
