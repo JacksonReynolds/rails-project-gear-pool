@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :items, only: [:show]
   end
   resources :users do
-    resources :trips, only: [:new, :edit, :update]
+    resources :trips, only: [:new, :edit, :update, :destroy]
   end
 end

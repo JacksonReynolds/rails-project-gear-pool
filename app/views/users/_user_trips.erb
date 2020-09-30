@@ -3,6 +3,8 @@
         <li>
             <ul>
                 <%= render partial: 'trips/trip', locals: {trip: trip} %>
+                <%= button_to "Cancel Trip", trip, method: :delete %>
+                <%= button_to 'Edit Trip', edit_trip_path(trip) %>
             </ul>
         </li>
     <% end if user_upcoming_trips %>
