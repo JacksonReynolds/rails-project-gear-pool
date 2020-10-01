@@ -25,11 +25,17 @@ class ItemsController < ApplicationController
 
     def create
         @item = Item.new(item_params)
-        if @item.save 
+        binding.pry
+        if params[:item][:gear_list_id].present? && params[:item][:gear_list_attributes][:name].present?
+            @item.errors[:gear_list] << "Must EITHER create new gear list or choose an existing list"
+            @gear_lists = GearList.all
+            render 'new'
+        elsif @item.save 
             redirect_to items_path
         else
             @gear_lists = GearList.all
-            @item.build_gear_list
+            @item.build_gear_list if !@item.gear_list
+            # binding.pry
             render 'new'
         end
     end
