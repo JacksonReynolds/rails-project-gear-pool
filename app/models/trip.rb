@@ -1,10 +1,15 @@
 class Trip < ApplicationRecord
+    include ActiveModel::Validations
     belongs_to :user
     belongs_to :gear_list
     validates :destination, presence: true
+
     validates :pickup, presence: true
+    validates_with PickupValidator
+
     validates :dropoff, presence: true
     validates :gear_list, presence: true
+    validates_with DropoffValidator
 
     scope :user_upcoming, -> (user) {where("user_id = #{user.id}").where("pickup > '#{Time.now}'")}
     scope :user_past, -> (user) {where("user_id = #{user.id}").where("dropoff < '#{Time.now}'")}
