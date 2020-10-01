@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+    before_action :require_login, except: [:index, :show]
+
     def show
         if params[:gear_list_id]
             @gl = GearList.find_by(id: params[:gear_list_id])
