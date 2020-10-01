@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
             redirect_to items_path
         else
             @gear_lists = GearList.all
+            @item.build_gear_list
             render 'new'
         end
     end

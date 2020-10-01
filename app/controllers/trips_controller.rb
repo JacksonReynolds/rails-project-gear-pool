@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 
     before_action :require_login
+    before_action :set_trip, except: [:new, :create, :index]
 
     def new
         if params[:user_id]
@@ -21,16 +22,7 @@ class TripsController < ApplicationController
         if params[:filter]
             user = User.find_by(id: params[:user_id])
             if user == current_user
-                case params[:filter]
-                when 'All'
-                    @trips = user.trips
-                when 'Upcoming'
-                    @trips = Trip.upcoming_for_user(user)
-                when 'Past'
-                    @trips = Trip.past_for_user(user)
-                else
-                    redirect_to user_path(user), alert: "Try again"
-                end
+                @trips = Trip.set_filtered_trips(params[:filter], current_user)
             else 
                 redirect_to user_path(user), alert: "Those aren't your trips"
             end
@@ -49,12 +41,22 @@ class TripsController < ApplicationController
         end
     end
 
-    def show
-        @trip = Trip.find_by(id: params[:id])
+    def show; end
+
+    def edit
+        @gear_lists = GearList.all
+    end
+    
+    def update
+        if @trip.update(trip_params)
+            redirect_to trip_path(@trip)
+        else 
+            @gear_lists = GearList.all
+            render 'edit'
+        end
     end
     
     def destroy
-        @trip = Trip.find_by(id: params[:id])
         if @trip.user != current_user
             redirect_to user_path(current_user), alert: "That trip doesn't belong to you"
         else
@@ -64,6 +66,10 @@ class TripsController < ApplicationController
     end
 
     private
+
+    def set_trip
+        @trip = Trip.find_by(id: params[:id])
+    end
     
     def trip_params
         params.require(:trip).permit(:destination, :pickup, :dropoff, :gear_list_id)

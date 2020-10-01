@@ -4,7 +4,7 @@
             <ul>
                 <%= render partial: 'trips/trip', locals: {trip: trip} %>
                 <%= button_to "Cancel Trip", trip, method: :delete %>
-                <%= button_to 'Edit Trip', edit_trip_path(trip) %>
+                <%= button_to 'Edit Trip', edit_trip_path(trip), method: :get %>
             </ul>
         </li>
     <% end %>

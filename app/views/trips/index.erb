@@ -1,5 +1,5 @@
 <h1>Trip Index</h1>
 
-<%= link_to 'Add a Trip', new_trip_path %>
+<%= link_to 'Add a Trip', new_user_trip_path(current_user) %>
 
-<%= render partial: 'users/user_trips', locals: {trips: @trips} %>
+<%= render partial: 'trips', locals: {trips: @trips} %>
