@@ -22,7 +22,7 @@ class TripsController < ApplicationController
         if params[:filter]
             user = User.find_by(id: params[:user_id])
             if user == current_user
-                @trips = Trip.set_filtered_trips(params[:filter], current_user)
+                @trips = set_user_trips
             else 
                 redirect_to user_path(user), alert: "Those aren't your trips"
             end
@@ -66,6 +66,17 @@ class TripsController < ApplicationController
     end
 
     private
+
+    def set_user_trips
+        case params[:filter]
+        when 'All'
+            current_user.trips
+        when 'Upcoming'
+            Trip.user_upcoming(current_user)
+        when 'Past'
+            Trip.user_past(current_user)
+        end
+    end
 
     def set_trip
         @trip = Trip.find_by(id: params[:id])
