@@ -10,12 +10,12 @@ class TripsController < ApplicationController
                 redirect_to root_path, alert: "Please sign in to plan a trip"
             else
                 @trip = @user.trips.build
+                @gl = @trip.build_gear_list
+                @gear_lists = GearList.all
             end
         else
-            @trip = Trip.new
+            redirect_to user_path(current_user), alert: 'Please plan a trip from your profile'
         end
-        @gl = @trip.build_gear_list
-        @gear_lists = GearList.all
     end
 
     def index
@@ -27,7 +27,7 @@ class TripsController < ApplicationController
                 redirect_to user_path(user), alert: "Those aren't your trips"
             end
         else
-            @trips = Trip.all
+            redirect_to user_path(current_user), alert: "You can view your trips from your profile!"
         end
     end
 

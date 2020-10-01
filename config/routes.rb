@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy', as: 'logout' 
 
   resources :items, only: [:index, :show, :new, :create]
-  resources :trips
+  resources :trips, only: [:create, :update]
 
   resources :gear_lists do
     resources :items, only: [:show]
