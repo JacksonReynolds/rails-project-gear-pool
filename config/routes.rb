@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create]
   resources :trips, only: [:create, :update]
 
-  resources :gear_lists do
+  resources :gear_lists, only: [:index] do
     resources :items, only: [:show]
   end
 
