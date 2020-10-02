@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :trips, only: [:index, :new, :edit, :update, :destroy]
+    resources :trips, only: [:index, :new, :edit, :destroy, :show]
   end
 
   post '/users/:user_id/trips', to: 'trips#index'

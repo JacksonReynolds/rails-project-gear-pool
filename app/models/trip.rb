@@ -5,11 +5,11 @@ class Trip < ApplicationRecord
     validates :destination, presence: true
 
     validates :pickup, presence: true
-    validates_with PickupValidator
+    validates_with PickupValidator, if: :pickup
 
     validates :dropoff, presence: true
     validates :gear_list, presence: true
-    validates_with DropoffValidator
+    validates_with DropoffValidator, if: :dropoff
 
     scope :user_upcoming, -> (user) {where("user_id = #{user.id}").where("pickup > '#{Time.now}'")}
     scope :user_past, -> (user) {where("user_id = #{user.id}").where("dropoff < '#{Time.now}'")}

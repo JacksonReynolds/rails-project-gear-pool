@@ -34,7 +34,7 @@ class TripsController < ApplicationController
     def create
         @trip = current_user.trips.build(trip_params)
         if @trip.save
-            redirect_to trip_path(@trip)
+            redirect_to user_trip_path(current_user, @trip)
         else
             @gear_lists = GearList.all
             render 'new'
@@ -49,7 +49,7 @@ class TripsController < ApplicationController
     
     def update
         if @trip.update(trip_params)
-            redirect_to trip_path(@trip)
+            redirect_to user_trip_path(current_user, @trip)
         else 
             @gear_lists = GearList.all
             render 'edit'
