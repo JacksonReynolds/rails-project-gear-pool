@@ -6,15 +6,15 @@ This repository is for my Flatiron School Rails Portfolio Project. For this proj
 
 ## Pre-requisites
 
-Make sure that you have installed bundler. You can check this by running `gem install bundler` from your root directory in the temrinal.
+Make sure that you have installed bundler. You can check this by running `gem install bundler` from your root directory in the terminal.
 
 ## Install
 
-Once you have cloned this repository, cd into the app parent directory and run `bundler install`. After that, run `rake db:seed` to make sure the database is set up.
+Once you have cloned this repository, cd into the app parent directory and run `bundler install`. After that, run `rake db:migrate` to make sure the database is set up.
 
 ## Running the App
 
-In the terminal, start the rails server (`rails s`) and navigate to `localhost:3000` in your browser of choice. This will bring you the root directory of the app, from which you can navigate from there using the nav bar at the top.
+In the terminal, start the rails server (`rails s`) and navigate to `localhost:3000` in your browser of choice. This will bring you to the root directory of the app, from which you can navigate using the nav bar at the top.
 
 ## Contributors Guide
 
