@@ -20,10 +20,14 @@ Specs:
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
         -- Each model validates that all attributes are defined, and names are unique
         -- Trip requires that a new trip must be in the future and the dropoff (end of trip) must be at soem point later    than the pickup (beginning of trip)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+        -- "5 most popular Gear Lists", URL: localhost:3000/most_popular
 - [x] Include signup (how e.g. Devise)
+        -- yes
 - [x] Include login (how e.g. Devise)
+        -- yes
 - [x] Include logout (how e.g. Devise)
+        -- yes
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
         -- Used Google OAuth 2 strategy 
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
