@@ -4,9 +4,4 @@ class GearListsController < ApplicationController
         @gear_lists = GearList.all
     end
 
-    private
-
-    def gear_list_params
-        params.require(:gear_list).permit(:name)
-    end
 end
