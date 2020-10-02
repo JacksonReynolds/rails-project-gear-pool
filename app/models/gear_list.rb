@@ -5,4 +5,6 @@ class GearList < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: true
 
+    scope :most_trips, -> {order(trips: :desc).limit(5)}
+
 end

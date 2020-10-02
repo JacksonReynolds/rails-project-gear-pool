@@ -14,6 +14,7 @@ class Trip < ApplicationRecord
     scope :user_upcoming, -> (user) {where("user_id = ?", user.id).where("pickup > ?", Time.now)}
     scope :user_past, -> (user) {where("user_id = ?", user.id).where("dropoff < ?", Time.now)}
 
+
     def gear_list_attributes=(gear_list_attributes)      
         self.build_gear_list(gear_list_attributes) unless self.gear_list_id 
     end

@@ -1,16 +1,9 @@
 <h1>Gear List Index</h1>
 
+<h2><%= link_to "5 Most Popular Gear Lists!", most_popular_path %></h2>
+
+
 <%= render partial: 'application/alert' %>
 
-<ul>
-    <% @gear_lists.each do |g| %>
-        <li>
-            <h3><%= g.name %></h3>
-            <ul>
-                <% g.items.each do |i| %>
-                    <li><%= i.name %> - <%= link_to 'See item', gear_list_item_path(g, i) %></li>
-                <% end %>
-            </ul>
-        </li>
-    <% end %>
-</ul>
+
+<%= render partial: 'gear_lists', locals: {gear_lists: @gear_lists} %>

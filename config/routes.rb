@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show, :new, :create]
   resources :trips, only: [:create, :update]
+  
+  get '/most_popular', to: 'gear_lists#most_popular', as: 'most_popular'
 
   resources :gear_lists, only: [:index] do
     resources :items, only: [:show]
