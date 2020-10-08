@@ -19,7 +19,14 @@ class TripsController < ApplicationController
     end
 
     def index
-        if params[:filter]
+        if params[:gear_list_id]
+            @gear_list = GearList.find_by(id: params[:gear_list_id])
+            if @gear_list
+                @trips = @gear_list.trips
+            else
+                redirect_to root_path, alert: "That Gear List doesn't exist"
+            end
+        elsif params[:filter]
             user = User.find_by(id: params[:user_id])
             if user == current_user
                 @trips = set_user_trips

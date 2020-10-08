@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :gear_lists, only: [:index] do
     resources :items, only: [:show]
+    resources :trips, only: [:index]
   end
   resources :items, only: [:index, :show, :new, :create]
 
